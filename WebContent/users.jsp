@@ -11,6 +11,10 @@
 	<form method="POST" action="LogoutController">
 		<input type="submit" value="Logout">
 	</form>
+	<form id="search" name="searchForm" method="GET" action="search">
+		        <input type="text" name="search" id="search"><input type="submit" value="search">
+	</form>
+	<a href="home">Show all</a>
 	<div class="usersList">
 		<h1>Users:</h1>
 		<ul>
