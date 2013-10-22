@@ -6,9 +6,7 @@ import model.User;
 import model.UsersList;
 
 public class UsersDAO {
-	public UsersDAO() {
-		UsersList list = new UsersList();
-	}
+	public UsersDAO() {}
 	
 	public List<User> load() {
 		return UsersList.getUsers();
