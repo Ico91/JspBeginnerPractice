@@ -11,20 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.UsersDAO;
 
-@WebServlet("/UserDetailsController")
-public class UserDetailsController extends HttpServlet {
+@WebServlet("/home")
+public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserDetailsController() {
+	public Home() {
 		super();
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/users.jsp");
 		UsersDAO usersDao = new UsersDAO();
-		request.setAttribute("result", usersDao.getUser(request.getParameter("id")));
+		RequestDispatcher rd = request.getRequestDispatcher("/users.jsp");
+		request.setAttribute("users", usersDao.load());
 		rd.forward(request, response);
-		return;
 	}
 }

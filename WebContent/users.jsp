@@ -20,19 +20,5 @@
 			</c:forEach>
 		</ul>
 	</div>
-	<div class="userDetails">
-		<form id="details" method="POST" action="UpdateUserServlet">
-			<label for="username">Username:</label><br />
-			<input type="text" name="username" id="username" value="${result.username}"><br />
-			<label for="password">Password:</label><br />
-			<input type="text" name="password" id="password" value="${result.password}"><br /> 
-			<label for="type">Type:</label><br />
-			<select name="type" id="type">
-				<option value="Admin">Admin</option>
-				<option value="User">User</option>
-			</select><br />
-			<br /> <input type="submit" value="Save">
-		</form>
-	</div>
 </body>
 </html>

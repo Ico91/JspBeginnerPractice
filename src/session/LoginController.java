@@ -13,7 +13,7 @@ import model.User;
 import model.UserType;
 import dao.UsersDAO;
 
-@WebServlet("/LoginController")
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,14 +24,11 @@ public class LoginController extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {			
 		UsersDAO usersDao = new UsersDAO();
-		RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
 		for (User u : usersDao.load()) {
 			if (u.getUsername().equals(request.getParameter("username"))
 					&& u.getPassword().equals(request.getParameter("password"))) {
 				if (u.getType() == UserType.ADMIN) {
-					request.setAttribute("users", usersDao.load());
-					rd.forward(request, response);
-					return;
+					response.sendRedirect("home");
 				}
 			}
 		}
