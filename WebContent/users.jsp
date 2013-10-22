@@ -16,7 +16,7 @@
 		<h1>Users:</h1>
 		<ul>
 			<c:forEach items="${users}" var="element">
-				<li><a href="UserDetailsController?id=${element.id}"><c:out
+				<li><a href="details?id=${element.id}"><c:out
 							value="${element.username}"></c:out> </a><a href="#">Edit</a></li>
 
 			</c:forEach>
