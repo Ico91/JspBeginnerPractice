@@ -8,15 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
 	<form method="POST" action="LogoutController">
 		<input type="submit" value="Logout">
 	</form>
+	<form id="search" name="searchForm" method="GET" action="search">
+		        <input type="text" name="search" id="search"><input type="submit" value="search">
+	</form>
+	<a href="home">Show all</a>
 	<div class="usersList">
 		<h1>Users:</h1>
 		<ul>
 			<c:forEach items="${users}" var="element">
 				<li><a href="details?id=${element.id}"><c:out
 							value="${element.username}"></c:out> </a><a href="#">Edit</a></li>
+
 			</c:forEach>
 		</ul>
 	</div>
