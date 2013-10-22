@@ -20,5 +20,6 @@
 			</select><br />
 		<input type="submit" value="Save">
 	</form>
+	<a href="home">Return home</a>
 </body>
 </html>
