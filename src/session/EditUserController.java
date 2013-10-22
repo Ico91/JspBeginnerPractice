@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.UserType;
 import dao.UsersDAO;
 
 @WebServlet("/editUser")
@@ -23,6 +24,7 @@ public class EditUserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("/edit.jsp");
+		request.setAttribute("types", UserType.values());
 		request.setAttribute("user", usersDao.getUser(request.getParameter("id")));
 		
 		rd.forward(request, response);

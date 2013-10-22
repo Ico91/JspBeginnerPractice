@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="userTypes" class="model.UserTypeBean" />
 	<form id="update" method="POST" action="update?id=${user.id}">
 		<label for="username">Username:</label><br />
 		<input type="text" name="username" id="username" value="${user.username}"><br />
@@ -17,8 +16,8 @@
 		<input type="text" name="password" id="password" value="${user.password}"><br /> 
 		<label for="type">Type:</label><br />
 		<select name="type" id="type">
-            <c:forEach items="${userTypes.values}" var="userType">
-                <option value="${userType}" ${user.type == userType ? 'selected' : ''}>${userType}</option>        
+            <c:forEach items="${types}" var="type">
+                <option value="${type}" ${user.type == type ? 'selected' : ''}>${type}</option>        
             </c:forEach>
         </select>
 		<input type="submit" value="Save">
