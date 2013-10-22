@@ -21,7 +21,6 @@ public class SearchController extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("search"));
 		RequestDispatcher requestDispacher = request.getRequestDispatcher("users.jsp");
 		request.setAttribute("users", search(request.getParameter("search")));
 		requestDispacher.forward(request, response);
@@ -31,11 +30,14 @@ public class SearchController extends HttpServlet {
 		List<User> listOfUsers = UsersList.getUsers();
 		List<User> usersToReturn = new ArrayList<User>();
 		
+		if(searchTerm == null)
+			return usersToReturn;
+		
 		for(User u : listOfUsers) {
 			if(u.getUsername().contains(searchTerm))
 				usersToReturn.add(u);
 		}
-		System.out.println(usersToReturn.size());
+
 		return usersToReturn;
 	}
 }
