@@ -17,8 +17,7 @@
 		<ul>
 			<c:forEach items="${users}" var="element">
 				<li><a href="details?id=${element.id}"><c:out
-							value="${element.username}"></c:out> </a><a href="#">Edit</a></li>
-
+							value="${element.username}"></c:out> </a><a href="editUser?id=${element.id}">Edit</a></li>
 			</c:forEach>
 		</ul>
 	</div>
