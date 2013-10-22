@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="POST" action="LoginController" >
+	<form method="POST" action="login" >
 		<input type="text" name="username" id="username"><br/>
 		<input type="password" name="password"><br/>
 		<input type="submit" value="Login">
