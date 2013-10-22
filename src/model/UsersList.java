@@ -5,12 +5,12 @@ import java.util.List;
 
 public class UsersList {
 	private static List<User> users = new ArrayList<User>();
-	
-	public UsersList() {
-		users.clear();
+	static {
 		users.add(new User("admin", "123", UserType.ADMIN));
 		users.add(new User("guest", "321", UserType.USER));
 	}
+	
+	public UsersList() {	}
 	
 	public static List<User> getUsers() {
 		return users;
