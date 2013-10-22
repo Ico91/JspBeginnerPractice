@@ -11,11 +11,27 @@
 	<form method="POST" action="LogoutController">
 		<input type="submit" value="Logout">
 	</form>
-	<h1>Welcome</h1>
-	<ul>
-		<c:forEach items="${users}" var="element">
-			<li><c:out value="${element.username}"></c:out></li>
-		</c:forEach>
-	</ul>
+	<div class="usersList">
+		<h1>Users:</h1>
+		<ul>
+			<c:forEach items="${users}" var="element">
+				<li><c:out value="${element.username}"></c:out> <a href="#">Edit</a></li> 
+			</c:forEach>
+		</ul>
+	</div>
+	<div class="userDetails">
+		<form id="details" method="POST" action="UpdateUserServlet">
+			<label for="username">Username:</label><br/>
+			<input type="text" name="username" id="username"><br/>
+			<label for="password">Password:</label><br/>
+			<input type="text" name="password" id="password"><br/>
+			<label for="type">Type:</label><br/>
+			<select name="type" id="type">
+				<option value="Admin">Admin</option>
+				<option value="User">User</option>
+			</select><br/><br/>
+			<input type="submit" value="Save">
+		</form>
+	</div>
 </body>
 </html>
