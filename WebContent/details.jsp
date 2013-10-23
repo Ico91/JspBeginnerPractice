@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="header.jspf"%>
+	<br /><br /><br />
 	<label for="username">Username:</label><br />
 	<input type="text" name="username" id="username" value="${user.username}"><br />
 	<label for="password">Password:</label><br />
 	<input type="text" name="password" id="password" value="${user.password}"><br /> 
 	<label for="type">Type:</label><br />
 	<input type="text" name="type" id="type" value="${user.type}"><br />
-	<a href="home">Return home</a>
 </body>
 </html>

@@ -8,10 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<form method="POST" action="LogoutController">
-		<input type="submit" value="Logout">
-	</form>
+	<%@ include file="header.jspf"%>
+	<br /><br /><br />
 	<form id="search" name="searchForm" method="GET" action="search">
 		        <input type="text" name="search" id="search"><input type="submit" value="search">
 	</form>
