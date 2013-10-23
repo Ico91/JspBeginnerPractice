@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="header.jspf"%>
+	<br /><br /><br />
 	<form id="update" method="POST" action="update?id=${user.id}">
 		<label for="username">Username:</label><br />
 		<input type="text" name="username" id="username" value="${user.username}"><br />
@@ -22,6 +24,5 @@
         </select>
 		<input type="submit" value="Save">
 	</form>
-	<a href="home">Return home</a>
 </body>
 </html>
