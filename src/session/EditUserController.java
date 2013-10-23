@@ -2,7 +2,6 @@ package session;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,11 +22,15 @@ public class EditUserController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/edit.jsp");
-		request.setAttribute("types", UserType.values());
-		request.setAttribute("user", usersDao.getUser(request.getParameter("id")));
+		new RequestManager(request, response) {
+			@Override
+			public void request() {
+				request.setAttribute("types", UserType.values());
+				request.setAttribute("user", usersDao.getUser(request.getParameter("id")));
+				
+			}
+		}.forward("/edit.jsp");
 		
-		rd.forward(request, response);
 	}
 
 }

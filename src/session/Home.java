@@ -2,7 +2,6 @@ package session;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +20,18 @@ public class Home extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UsersDAO usersDao = new UsersDAO();
-		RequestDispatcher rd = request.getRequestDispatcher("/users.jsp");
-		request.setAttribute("users", usersDao.load());
-		rd.forward(request, response);
+		
+		
+		new RequestManager(request, response) {
+
+			@Override
+			public void request() {
+				UsersDAO usersDao = new UsersDAO();
+				request.setAttribute("users", usersDao.load());
+				
+			}
+			
+		}.forward("/users.jsp");
+	
 	}
 }

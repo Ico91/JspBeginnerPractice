@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +20,15 @@ public class SearchController extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		RequestDispatcher requestDispacher = request.getRequestDispatcher("users.jsp");
-		request.setAttribute("users", search(request.getParameter("search")));
-		requestDispacher.forward(request, response);
+		
+		new RequestManager(request, response) {
+
+			@Override
+			public void request() {
+				request.setAttribute("users", search(request.getParameter("search")));
+			}
+		}.forward("users.jsp");
+		
 	}
 	
 	private List<User> search(String searchTerm) {
