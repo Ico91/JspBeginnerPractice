@@ -1,4 +1,4 @@
-package session;
+package web.resources.session;
 
 import java.io.IOException;
 

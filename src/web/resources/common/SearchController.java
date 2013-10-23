@@ -1,4 +1,4 @@
-package session;
+package web.resources.common;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import web.requests.RequestManager;
 import model.User;
 import model.UsersList;
 
@@ -18,7 +19,7 @@ public class SearchController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public void doGet(final HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
 		new RequestManager(request, response) {

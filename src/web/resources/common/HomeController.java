@@ -1,4 +1,4 @@
-package session;
+package web.resources.common;
 
 import java.io.IOException;
 
@@ -8,26 +8,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import web.requests.RequestManager;
 import dao.UsersDAO;
 
-@WebServlet("/details")
-public class UserDetailsController extends HttpServlet {
+@WebServlet("/home")
+public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserDetailsController() {
+	public HomeController() {
 		super();
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(final HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
 		new RequestManager(request, response) {
-			
+
 			@Override
 			public void request() {
 				UsersDAO usersDao = new UsersDAO();
-				request.setAttribute("user", usersDao.getUser(request.getParameter("id")));
+				request.setAttribute("users", usersDao.load());
+				
 			}
-		}.forward("/details.jsp");
+			
+		}.forward("/users.jsp");
+	
 	}
 }
