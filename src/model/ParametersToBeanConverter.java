@@ -18,10 +18,10 @@ public class ParametersToBeanConverter {
 				}
 			});
 
-	public static <T> T populate(Class<T> clazz, HttpServletRequest request) {
+	public static <T> T populate(Class<T> c, HttpServletRequest request) {
 		T object = null;
 		try {
-			object = (T) clazz.newInstance();
+			object = (T) c.newInstance();
 			beanUtilsBean.populate(object, request.getParameterMap());
 		} catch (InstantiationException | IllegalAccessException
 				| InvocationTargetException e) {
