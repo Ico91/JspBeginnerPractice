@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ParametersToBeanConverter;
 import model.User;
 import model.UserType;
 import dao.UsersDAO;
@@ -23,20 +24,11 @@ public class UpdateUserController extends HttpServlet {
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String type = request.getParameter("type");
+		User updateUser = ParametersToBeanConverter.populate(User.class, request);
 		
-		User updateUser = new User();
-		updateUser.setId(id);
-		updateUser.setUsername(username);
-		updateUser.setPassword(password);
-		updateUser.setType(UserType.valueOf(type));
-		
-		usersDao.updateUser(id, updateUser);
+		usersDao.updateUser(updateUser.getId(), updateUser);
 	
-		response.sendRedirect("editUser?id=" + id);
+		response.sendRedirect("editUser?id=" + updateUser.getId());
 	}
 
 }
