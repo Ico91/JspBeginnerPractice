@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.ParametersToBeanConverter;
 import model.User;
-import model.UserType;
 import dao.UsersDAO;
 
 @WebServlet("/update")
